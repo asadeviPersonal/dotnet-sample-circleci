@@ -14,4 +14,4 @@ jobs:
           command: dotnet build DotnetCore-Samples.sln
       - run:
           name: Run tests 
-          command: dotnet test --no-build --logger "trx;LogFileName=../../../xunit-output.xml" DotnetCore/MSTestSample
+          command: dotnet test --no-build --logger "trx;LogFileName=../../../xunit-output.xml" DotnetCore/
