@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: microsoft/aspnetcore-build:2.0
+    steps:
+      - checkout
+      - run:
+          name: Restore solution
+          command: dotnet restore src/
+      - run:
+          name: Build solution
+          command: dotnet build src/
+      - run:
+          name: Run tests 
+          command: dotnet test --no-build --logger "trx;LogFileName=../../../xunit-output.xml" 
