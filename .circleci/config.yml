@@ -8,10 +8,10 @@ jobs:
       - checkout
       - run:
           name: Restore solution
-          command: dotnet restore DotnetCore-Samples.sln
+          command: dotnet restore 
       - run:
           name: Build solution
-          command: dotnet build DotnetCore-Samples.sln
+          command: dotnet build 
       - run:
           name: Run tests 
           command: dotnet test --no-build --logger "trx;LogFileName=../../../xunit-output.xml" DotnetCore/
