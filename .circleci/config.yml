@@ -12,10 +12,10 @@ jobs:
       - run:
           name: Build solution
           command: dotnet build 
-#       - run:
-#           name: Run tests 
-#           command: dotnet test --no-build --logger "trx;LogFileName=xunit-output.xml" 
-       - run:
+      - run:
+          name: Run tests 
+          command: dotnet test --no-build --logger "trx;LogFileName=xunit-output.xml" 
+      - run:
           name: Run tests 
           command: dotnet test --no-build --logger "trx;LogFileName=/root/project/tests/TestResult/xunit-output.xml"
       - store_artifacts:
