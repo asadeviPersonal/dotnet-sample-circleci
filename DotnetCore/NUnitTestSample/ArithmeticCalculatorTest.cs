@@ -22,7 +22,7 @@ namespace NUnitTestSample.UnitTest
         [Test]
         public void FailingSubtractionTest()
         {
-            Assert.IsTrue(_arithmeticCalculator.Subtract(5, 4) == 0);
+            Assert.IsTrue(_arithmeticCalculator.Subtract(5, 4) == 1);
         }
 
         [Test]
@@ -34,7 +34,7 @@ namespace NUnitTestSample.UnitTest
         [Test]
         public void FailingDivisionTest()
         {
-            Assert.IsTrue(_arithmeticCalculator.Divide(8, 4) == 1);
+            Assert.IsTrue(_arithmeticCalculator.Divide(8, 4) == 2);
         }
     }
 }

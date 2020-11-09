@@ -22,7 +22,7 @@ namespace xUnitSample
         [Fact]
         public void FailingSubtractionTest()
         {
-            Assert.Equal(0, _arithmeticCalculator.Subtract(5, 4));
+            Assert.Equal(1, _arithmeticCalculator.Subtract(5, 4));
         }
 
         [Fact]
@@ -34,7 +34,7 @@ namespace xUnitSample
         [Fact]
         public void FailingDivisionTest()
         {
-            Assert.Equal(1, _arithmeticCalculator.Divide(8, 4));
+            Assert.Equal(2, _arithmeticCalculator.Divide(8, 4));
         }
 
         public void Dispose()

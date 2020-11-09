@@ -23,7 +23,7 @@ namespace MSTestSample
         [TestMethod]
         public void FailingSubtractionTest()
         {
-            Assert.IsTrue(_arithmeticCalculator.Subtract(5, 4) == 0);
+            Assert.IsTrue(_arithmeticCalculator.Subtract(5, 4) == 1);
         }
 
         [TestMethod]
@@ -35,7 +35,7 @@ namespace MSTestSample
         [TestMethod]
         public void FailingDivisionTest()
         {
-            Assert.IsTrue(_arithmeticCalculator.Divide(8, 4) == 1);
+            Assert.IsTrue(_arithmeticCalculator.Divide(8, 4) == 2);
         }
     }
 }
