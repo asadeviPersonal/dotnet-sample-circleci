@@ -27,8 +27,12 @@ jobs:
           command: dotnet test -c Debug -v minimal 
             --no-build 
             --collect:"XPlat Code Coverage" 
-#             --settings coverlet.runsettings
             --results-directory './'
+#           command: dotnet test -c Debug -v minimal 
+#             --no-build 
+#             --collect:"XPlat Code Coverage" 
+#             --settings coverlet.runsettings
+#             --results-directory './'
             
 #       - store_artifacts:
 #           path: ./../
