@@ -12,6 +12,55 @@ jobs:
       - run:
           name: Build solution
           command: dotnet build 
-      - run:
+#       - run:
+#           name: Run tests 
+#           command: dotnet test --no-build --logger "trx;LogFileName=xunit-output.xml" 
+       - run:
           name: Run tests 
-          command: dotnet test --no-build --logger "trx;LogFileName=xunit-output.xml" 
+          command: dotnet test --no-build --logger "trx;LogFileName=/root/project/tests/TestResult/xunit-output.xml"
+      - store_artifacts:
+          path: /root/project/tests/TestResult/
+          when: always
+      - run:
+          name: coverage
+#           command: dotnet test --no-build -v n --results-directory:test_coverage --collect:"Code Coverage"
+          command: dotnet test -c Debug -v minimal 
+            --no-build 
+            --collect:"XPlat Code Coverage" 
+            --settings coverlet.runsettings
+            --results-directory './'
+            
+#       - store_artifacts:
+#           path: ./../
+          
+      - run: 
+          command: export PATH="$PATH:/root/.dotnet/tools"
+          name: pakage
+          
+      - run:
+          name: install report
+          command: | 
+            dotnet tool install --global dotnet-reportgenerator-globaltool --version 4.7.1
+            dotnet tool install dotnet-reportgenerator-globaltool --tool-path tools --version 4.7.1
+            dotnet new tool-manifest
+            dotnet tool install dotnet-reportgenerator-globaltool --version 4.7.1
+
+      - run:
+          command: | 
+                dotnet reportgenerator \
+                  "-reports:./*/coverage.cobertura.xml" \
+                  "-targetdir:./coveragereportHTML" \
+                  -reporttypes:Html
+#           command: |
+#               reportgenerator \
+#                 -reports:./CodeCoverageResults/../coverage.cobertura.xml \
+#                 -targetdir:./coveragereportHTML \
+#                 -verbosity:Off
+          name: Generate code coverage report
+#           command: dotnet $(asadeviPersonal)\.nuget\packages\reportgenerator\x.y.z\tools\netcoreapp3.0\ReportGenerator.dll \
+#                   "-reports:./CodeCoverageResults/../coverage.cobertura.xml" \
+#                   "-targetdir:./coveragereportHTML" \
+#                   -reporttypes:Html
+                  
+      - store_artifacts:
+          path: ./coveragereportHTML
